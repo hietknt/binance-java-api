@@ -1,11 +1,11 @@
 package com.binance.api.client.domain.account;
 
-import java.util.List;
-
 import com.binance.api.client.domain.ContingencyType;
 import com.binance.api.client.domain.OCOOrderStatus;
 import com.binance.api.client.domain.OCOStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewOCOResponse extends OrderList {

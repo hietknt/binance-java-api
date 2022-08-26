@@ -3,7 +3,12 @@ package com.binance.api.client.impl;
 import com.binance.api.client.BinanceApiSwapRestClient;
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.binance.api.client.domain.SwapRemoveType;
-import com.binance.api.client.domain.account.*;
+import com.binance.api.client.domain.account.Liquidity;
+import com.binance.api.client.domain.account.LiquidityOperationRecord;
+import com.binance.api.client.domain.account.Pool;
+import com.binance.api.client.domain.account.SwapHistory;
+import com.binance.api.client.domain.account.SwapQuote;
+import com.binance.api.client.domain.account.SwapRecord;
 
 import java.util.List;
 

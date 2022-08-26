@@ -12,7 +12,7 @@ import java.io.IOException;
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.getBinanceApiError;
 
 /**
- * An adapter/wrapper which transforms a Callback from Retrofit into a BinanceApiCallback which is exposed to the client.
+ * An adapter/wrapper which transforms a Callback from Retrofit into a BinanceApiCallback which is exposed to the com.binance.api.client.
  */
 public class BinanceApiCallbackAdapter<T> implements Callback<T> {
 

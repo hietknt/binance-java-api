@@ -5,14 +5,14 @@ import com.binance.api.client.BinanceApiCallback;
 import com.binance.api.client.config.BinanceApiConfig;
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.binance.api.client.domain.account.Account;
+import com.binance.api.client.domain.account.Deposit;
 import com.binance.api.client.domain.account.DepositAddress;
-import com.binance.api.client.domain.account.DepositHistory;
 import com.binance.api.client.domain.account.NewOrder;
 import com.binance.api.client.domain.account.NewOrderResponse;
 import com.binance.api.client.domain.account.Order;
 import com.binance.api.client.domain.account.Trade;
 import com.binance.api.client.domain.account.TradeHistoryItem;
-import com.binance.api.client.domain.account.WithdrawHistory;
+import com.binance.api.client.domain.account.Withdraw;
 import com.binance.api.client.domain.account.WithdrawResult;
 import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
@@ -209,26 +209,47 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   }
 
   @Override
-  public void withdraw(String asset, String address, String amount, String name, String addressTag, BinanceApiCallback<WithdrawResult> callback) {
-    binanceApiService.withdraw(asset, address, amount, name, addressTag, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+  public void withdraw(String coin, String withdrawOrderId, String network, String address, String addressTag,
+                       String amount, Boolean transactionFeeFlag, String name, BinanceApiCallback<WithdrawResult> callback) {
+    binanceApiService.withdraw(coin, withdrawOrderId, network, address, addressTag, amount, transactionFeeFlag, name,
+            BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+        .enqueue(new BinanceApiCallbackAdapter<>(callback));
+  }
+
+
+  @Override
+  public void getDepositHistory(String coin, BinanceApiCallback<List<Deposit>> callback) {
+    binanceApiService.getDepositHistory(coin, null, null, null, null, 1000,
+            BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+            .enqueue(new BinanceApiCallbackAdapter<>(callback));
+  }
+
+  @Override
+  public void getDepositHistory(String coin, Integer status, Long startTime, Long endTime,
+                                Integer offset, Integer limit, BinanceApiCallback<List<Deposit>> callback) {
+    binanceApiService.getDepositHistory(coin, status, startTime, endTime, offset, limit,
+            BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
         .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
   @Override
-  public void getDepositHistory(String asset, BinanceApiCallback<DepositHistory> callback) {
-    binanceApiService.getDepositHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+  public void getWithdrawHistory(String coin, BinanceApiCallback<List<Withdraw>> callback) {
+    binanceApiService.getWithdrawHistory(coin, null, null, null, null, null, null,
+            BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+            .enqueue(new BinanceApiCallbackAdapter<>(callback));
+  }
+
+  @Override
+  public void getWithdrawHistory(String coin, String withdrawOrderId, Integer status, Long startTime, Long endTime,
+                                 Integer offset, Integer limit, BinanceApiCallback<List<Withdraw>> callback) {
+    binanceApiService.getWithdrawHistory(coin, withdrawOrderId, status, startTime, endTime, offset, limit,
+            BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
         .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
   @Override
-  public void getWithdrawHistory(String asset, BinanceApiCallback<WithdrawHistory> callback) {
-    binanceApiService.getWithdrawHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
-        .enqueue(new BinanceApiCallbackAdapter<>(callback));
-  }
-
-  @Override
-  public void getDepositAddress(String asset, BinanceApiCallback<DepositAddress> callback) {
-    binanceApiService.getDepositAddress(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+  public void getDepositAddress(String asset, String network, BinanceApiCallback<DepositAddress> callback) {
+    binanceApiService.getDepositAddress(asset, network, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
         .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 

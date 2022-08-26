@@ -1,9 +1,8 @@
 package com.binance.api.client.domain.account;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SubAccountTransfer {

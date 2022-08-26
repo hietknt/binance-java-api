@@ -1,7 +1,7 @@
 package com.binance.api.client;
 
 /**
- * BinanceApiCallback is a functional interface used together with the BinanceApiAsyncClient to provide a non-blocking REST client.
+ * BinanceApiCallback is a functional interface used together with the BinanceApiAsyncClient to provide a non-blocking REST com.binance.api.client.
  *
  * @param <T> the return type from the callback
  */

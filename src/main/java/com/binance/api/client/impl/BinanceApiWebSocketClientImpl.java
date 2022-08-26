@@ -3,7 +3,12 @@ package com.binance.api.client.impl;
 import com.binance.api.client.BinanceApiCallback;
 import com.binance.api.client.BinanceApiWebSocketClient;
 import com.binance.api.client.config.BinanceApiConfig;
-import com.binance.api.client.domain.event.*;
+import com.binance.api.client.domain.event.AggTradeEvent;
+import com.binance.api.client.domain.event.BookTickerEvent;
+import com.binance.api.client.domain.event.CandlestickEvent;
+import com.binance.api.client.domain.event.DepthEvent;
+import com.binance.api.client.domain.event.TickerEvent;
+import com.binance.api.client.domain.event.UserDataUpdateEvent;
 import com.binance.api.client.domain.market.CandlestickInterval;
 import com.fasterxml.jackson.core.type.TypeReference;
 import okhttp3.OkHttpClient;
@@ -16,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Binance API WebSocket client implementation using OkHttp.
+ * Binance API WebSocket com.binance.api.client implementation using OkHttp.
  */
 public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient, Closeable {
 

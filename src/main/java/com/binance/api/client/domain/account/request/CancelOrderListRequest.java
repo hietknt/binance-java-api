@@ -1,8 +1,7 @@
 package com.binance.api.client.domain.account.request;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import com.binance.api.client.constant.BinanceApiConstants;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class CancelOrderListRequest {
 
