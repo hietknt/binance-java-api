@@ -129,5 +129,6 @@ public class BinanceApiServiceGenerator {
                         Integer.parseInt(systemProperties.getProperty("https.proxyPort")))))
                 .proxyAuthenticator(Authenticator.JAVA_NET_AUTHENTICATOR)
                 .build();
+
     }
 }
