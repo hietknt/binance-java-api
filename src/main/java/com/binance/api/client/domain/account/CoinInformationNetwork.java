@@ -160,4 +160,27 @@ public class CoinInformationNetwork {
     public void setBusy(boolean busy) {
         this.busy = busy;
     }
+
+    @Override
+    public String toString() {
+        return "CoinInformationNetwork{" +
+                "addressRegex='" + addressRegex + '\'' +
+                ", coin='" + coin + '\'' +
+                ", depositDesc='" + depositDesc + '\'' +
+                ", depositEnable=" + depositEnable +
+                ", isDefault=" + isDefault +
+                ", memoRegex='" + memoRegex + '\'' +
+                ", minConfirm=" + minConfirm +
+                ", name='" + name + '\'' +
+                ", network='" + network + '\'' +
+                ", withdrawDesc='" + withdrawDesc + '\'' +
+                ", withdrawEnable=" + withdrawEnable +
+                ", withdrawFee='" + withdrawFee + '\'' +
+                ", withdrawMax='" + withdrawMax + '\'' +
+                ", withdrawMin='" + withdrawMin + '\'' +
+                ", sameAddress=" + sameAddress +
+                ", estimatedArrivalTime=" + estimatedArrivalTime +
+                ", busy=" + busy +
+                '}';
+    }
 }

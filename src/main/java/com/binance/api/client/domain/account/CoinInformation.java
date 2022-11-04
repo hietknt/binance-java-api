@@ -99,4 +99,20 @@ public class CoinInformation {
     public void setWithdrawing(String withdrawing) {
         this.withdrawing = withdrawing;
     }
+
+    @Override
+    public String toString() {
+        return "CoinInformation{" +
+                "coin='" + coin + '\'' +
+                ", depositAllEnable=" + depositAllEnable +
+                ", free='" + free + '\'' +
+                ", freeze='" + freeze + '\'' +
+                ", locked='" + locked + '\'' +
+                ", networkList=" + networkList +
+                ", storage='" + storage + '\'' +
+                ", trading=" + trading +
+                ", withdrawAllEnable=" + withdrawAllEnable +
+                ", withdrawing='" + withdrawing + '\'' +
+                '}';
+    }
 }
