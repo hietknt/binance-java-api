@@ -1,6 +1,7 @@
 package com.binance.api.client;
 
 import com.binance.api.client.domain.account.Account;
+import com.binance.api.client.domain.account.CoinInformation;
 import com.binance.api.client.domain.account.Deposit;
 import com.binance.api.client.domain.account.DepositAddress;
 import com.binance.api.client.domain.account.DustTransferResponse;
@@ -388,4 +389,11 @@ public interface BinanceApiRestClient {
      * @param listenKey listen key that identifies a data stream
      */
     void closeUserDataStream(String listenKey);
+
+    /**
+     * https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data
+     *
+     * @return gnarly list of maps of lists of maps of lists...
+     */
+    List<CoinInformation> coinsAvailable();
 }
