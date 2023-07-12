@@ -8,7 +8,6 @@ import com.binance.api.client.impl.BinanceApiRestClientImpl;
 import com.binance.api.client.impl.BinanceApiSwapRestClientImpl;
 import com.binance.api.client.impl.BinanceApiWebSocketClientImpl;
 
-import static com.binance.api.client.impl.BinanceApiServiceGenerator.changeSharedClientProxy;
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.getSharedClient;
 
 /**
@@ -110,8 +109,14 @@ public class BinanceApiClientFactory {
      * Creates a new synchronous/blocking REST com.binance.api.client with proxy.
      */
     public BinanceApiRestClient newRestClientWithProxy() {
-        changeSharedClientProxy();
         return new BinanceApiRestClientImpl(apiKey, secret, true);
+    }
+
+    /**
+     * Creates a new synchronous/blocking REST com.binance.api.client with proxy.
+     */
+    public BinanceApiRestClient newRestClientWithProxy(String ip, String port, String login, String password) {
+        return new BinanceApiRestClientImpl(apiKey, secret, ip, port, login, password);
     }
 
     /**

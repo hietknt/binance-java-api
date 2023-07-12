@@ -5,6 +5,7 @@ import com.binance.api.client.config.BinanceApiConfig;
 import com.binance.api.client.exception.BinanceApiException;
 import com.binance.api.client.security.AuthenticationInterceptor;
 import okhttp3.Authenticator;
+import okhttp3.Credentials;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
@@ -128,6 +129,27 @@ public class BinanceApiServiceGenerator {
                         systemProperties.getProperty("https.proxyHost"),
                         Integer.parseInt(systemProperties.getProperty("https.proxyPort")))))
                 .proxyAuthenticator(Authenticator.JAVA_NET_AUTHENTICATOR)
+                .build();
+
+    }
+
+    public static void changeSharedClientProxy(String ip, String port, String login, String password) {
+        Dispatcher dispatcher = new Dispatcher();
+        dispatcher.setMaxRequestsPerHost(500);
+        dispatcher.setMaxRequests(500);
+
+        Authenticator proxyAuthenticator = (route, response) -> {
+            String credential = Credentials.basic(login, password);
+            return response.request().newBuilder()
+                    .header("Proxy-Authorization", credential)
+                    .build();
+        };
+
+        sharedClient = new OkHttpClient.Builder()
+                .dispatcher(dispatcher)
+                .pingInterval(20, TimeUnit.SECONDS)
+                .proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(ip, Integer.parseInt(port))))
+                .proxyAuthenticator(proxyAuthenticator)
                 .build();
 
     }

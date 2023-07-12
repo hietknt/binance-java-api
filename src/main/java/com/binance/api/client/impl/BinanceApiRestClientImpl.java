@@ -64,6 +64,13 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
         binanceApiService = createService(BinanceApiService.class, apiKey, secret);
     }
 
+    public BinanceApiRestClientImpl(String apiKey, String secret, String ip, String port, String login, String password) {
+        if (ip != null && port != null && login != null && password != null) {
+            changeSharedClientProxy(ip, port, login, password);
+        }
+        binanceApiService = createService(BinanceApiService.class, apiKey, secret);
+    }
+
     // General endpoints
 
     @Override
